@@ -28,7 +28,7 @@ export const team = [
 // github: the deployed GitHub Pages / live project URL you want the card to open
 // description: a short description of what the project does
 export const projects = [
-  { title: 'E-commerce Template', image: 'public/projects/Ecommerce template.jpeg', description: 'Full-Stack E-commerce Template', github: 'https://ecommerce-frontend-m2bf.vercel.app', technologies: ['next', 'typescript', 'JavaScript'], category: 'Full-Stack' },
+  { title: 'E-commerce Template', image: 'public/projects/ecommerce.png', description: 'Full-Stack E-commerce Template', github: 'https://ecommerce-frontend-m2bf.vercel.app', technologies: ['next', 'typescript', 'JavaScript'], category: 'Full-Stack' },
   { title: 'Little Taco Shop', image: 'public/projects/Taco shop.png', description: 'Html Simble Taco Shop', github: 'https://little-taco-shop.ysfhawary.dev', technologies: ['Html5'], category: 'Frontend' },
   { title: 'Clinic', image: 'public/projects/Clinic.png', description: 'Simple Clinic Wep', github: 'https://clinic.ysfhawary.dev', technologies: ['Html5 ', 'Css3'], category: 'Frontend' },
   { title: 'Bloom Shop', image: 'public/projects/Bloom.png', description: 'Simple Bloom Shop ', github: 'https://bloom.ysfhawary.dev', technologies: ['Html5 ', 'Css3'], category: 'Frontend' },
