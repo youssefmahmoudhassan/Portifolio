@@ -1,0 +1,22 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Check, Copy, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { team } from '../data';
+
+function ContactCard({ person, index }) {
+  const [copied, setCopied] = useState(false);
+  const copyEmail = async () => { try { await navigator.clipboard.writeText(person.email); setCopied(true); window.setTimeout(() => setCopied(false), 1600); } catch { window.location.href = `mailto:${person.email}`; } };
+  return <motion.article className={`contact-person-card ${person.accent}`} initial={{ opacity: 0, x: index ? 14 : -14 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .4, delay: index * .1 }}><div className="contact-person-head"><div className="contact-avatar">{person.initials}</div><div><span className="section-kicker">TEAM MEMBER / 0{index + 1}</span><h3>{person.name}</h3><p>{person.role}</p></div></div><div className="contact-detail"><Phone size={16} /><a href={`tel:${person.phone}`}>{person.phone}</a></div><div className="contact-detail"><Mail size={16} /><a href={`mailto:${person.email}`}>{person.email}</a><button onClick={copyEmail} aria-label="Copy email" title="Copy email">{copied ? <Check size={15} /> : <Copy size={15} />}</button></div><div className="social-links"><a href={person.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={13} /></a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={13} /></a></div></motion.article>;
+}
+
+export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [sent, setSent] = useState(false);
+  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const submit = (e) => { e.preventDefault(); const subject = encodeURIComponent(form.subject || `Portfolio enquiry from ${form.name}`); const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`); window.location.href = `mailto:${team[0].email},${team[1].email}?subject=${subject}&body=${body}`; setSent(true); };
+  return <main className="page-main container contact-page"><motion.section className="contact-hero" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5 }}><span className="eyebrow"><span className="status-dot" /> OPEN TO GOOD IDEAS</span><h1>Have a good one?<br /><span className="gradient-text">Let’s talk.</span></h1><p>Got a project in mind, a question, or just want to connect? Drop us a message. We’re always happy to meet curious people.</p><div className="location-note"><MapPin size={15} /> Based in Egypt · Working everywhere</div></motion.section>
+    <div className="contact-layout"><section className="contact-people"><div className="contact-section-title"><span className="section-kicker">REACH OUT DIRECTLY</span><h2>Talk to the team.</h2></div>{team.map((person, i) => <ContactCard key={person.email} person={person} index={i} />)}</section>
+    <motion.section className="contact-form-wrap" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .5 }}><div className="form-heading"><span className="form-icon"><Send size={18} /></span><div><h2>Send a message</h2><p>Tell us a little about what you’re thinking.</p></div></div><form onSubmit={submit}><div className="form-row"><label>Your name<input name="name" value={form.name} onChange={update} placeholder="What should we call you?" required /></label><label>Your email<input type="email" name="email" value={form.email} onChange={update} placeholder="you@example.com" required /></label></div><label>Subject<input name="subject" value={form.subject} onChange={update} placeholder="What’s this about?" required /></label><label>Your message<textarea name="message" value={form.message} onChange={update} placeholder="Tell us about your idea..." rows="5" required /></label><button className="button button-primary form-submit" type="submit">{sent ? 'Opening your email app…' : 'Send your message'} <ArrowUpRight size={17} /></button><p className="form-footnote">This opens your email app with the message prepared. Nothing is stored on a server.</p></form></motion.section></div>
+    <section className="contact-bottom"><span className="status-dot" /><p>Good things start with a conversation.</p><span className="bottom-line" /></section>
+  </main>;
+}
