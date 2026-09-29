@@ -37,7 +37,7 @@ export const projects = [
   { title: 'Todo Shop', image: 'public/projects/Todo app.png', description: 'Simple Topo App', github: 'https://todo-app.ysfhawary.dev',  technologies: ['Html5  ', 'Css3', 'JavaScript  ES6+'], category: 'Frontend' } ,
   { title: 'Calculator', image: 'public/projects/Calculator.png', description: 'Simple Calculator', github: 'https://calculator.ysfhawary.dev', technologies: ['Html5  ', 'Css3', 'JavaScript  ES6+'], category: 'Frontend' },
   { title: 'Notes', image: 'public/projects/Notes.png', description: 'Simple Note', github: 'https://notes.ysfhawary.dev', technologies: ['Next.js', 'TypeScript', 'Tailwindcss', 'Redux-toolkit', 'Node.js', 'Nest.js', 'Prisma' ,'PostgreSQL'], category: 'Frontend' },
-  { title: 'Wheather App', image: 'public/projects/Weather.png', description: 'Wheather App  ', github: 'https://youssefmahmoudhassan.github.io/WEATHER-APP/', technologies: ['Next.js', 'TypeScript', 'Tailwindcss', 'Redux-toolkit', 'Node.js', 'Nest.js', 'Prisma' ,'PostgreSQL'], category: 'Frontend' },
+  { title: 'Wheather App', image: 'public/projects/Wheather.png', description: 'Wheather App  ', github: 'https://youssefmahmoudhassan.github.io/WEATHER-APP/', technologies: ['Next.js', 'TypeScript', 'Tailwindcss', 'Redux-toolkit', 'Node.js', 'Nest.js', 'Prisma' ,'PostgreSQL'], category: 'Frontend' },
  
 ];
 
